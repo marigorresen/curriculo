@@ -8,23 +8,35 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script>
     $(document).ready(function(){
+      $("#imagem").click(function(){
+        $("#imagem").attr("src", "Picture 048.jpg");
+      });
+
+      $("#principal").mouseenter(function(){
+        alert("OIE PROF!!!");
+      });
+
       $("#nome").hover(function(){
         $(this).css("color", "#3e0f67");
       },
       function(){
        $(this).css("color", "#fff");
       });
-    });
-    $(document).ready(function(){
-      $("#imagem").click(function(){
-        $("#imagem").attr("src", "Picture 048.jpg");
+      
+      $("#lateral").click(function(){
+        loadDoc();
       });
+
     });
-    $(document).ready(function(){
-      $("#principal").mouseenter(function(){
-        alert("OIE PROF!!!");
-      });
-    });
+    
+    function loadDoc() {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("lateral").innerHTML = this.responseText;
+      }
+      xhttp.open("GET", "texto.txt");
+      xhttp.send();
+    }
   </script>
 </head>
 <body>
